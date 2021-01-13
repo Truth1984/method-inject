@@ -7,7 +7,7 @@ module.exports = (target, preAction = () => {}, postAction = () => {}) => {
   let asyncfunc = preAction instanceof Function && preAction.constructor.name === "AsyncFunction";
   let modify = (i) => {
     if (target[i] instanceof Function) {
-      let targetFunc = target[i];
+      let targetFunc = target[i].bind(target);
       if (asyncfunc) {
         target[i] = async (...args) => {
           await preAction(i, args);

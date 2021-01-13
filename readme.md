@@ -7,7 +7,7 @@ usage: you don't want to modify an old module, but you want to know what each fu
 ## example
 
 ```js
-const MI = require("func-injector");
+const FI = require("func-injector");
 const CLS = class {
   constructor() {}
   add(a, b) {
@@ -23,8 +23,8 @@ let cls = new CLS();
 
 let logger = (name, value) => console.log({ name, value });
 
-MI(map, logger, logger);
-MI(cls, logger, logger);
+FI(map, logger, logger);
+FI(cls, logger, logger);
 
 map.add(1, 3);
 //{ name: 'add', value: [ 1, 3 ] }
